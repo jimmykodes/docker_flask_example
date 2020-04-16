@@ -1,0 +1,16 @@
+version: '3'
+services:
+  flask:
+    build: .
+    volumes:
+      - ./src/:/app
+    ports:
+      - 80:80
+    depends_on:
+      - db
+  db:
+    image: mongo:4.2.5
+    volumes:
+      - ./var/db:/data/db
+    ports:
+      - 27017:27017
